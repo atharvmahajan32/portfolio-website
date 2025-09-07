@@ -4,18 +4,11 @@ import { useState, useEffect } from "react"
 import { Database } from "lucide-react"
 
 const roles = [
-  "Software Engineer 🚀",
-  "Code Wizard ✨ (sometimes breaks things)",
-  "Bug Hunter 🐛 (creates more than catches)",
-  "Coffee-to-Code Converter ☕",
-  "Stack Overflow Researcher 📚",
-  "Rubber Duck Whisperer 🦆",
-  "Pixel Perfectionist 🎨 (when CSS cooperates)",
-  "API Tamer 🔌 (mostly friendly)",
-  "Database Whisperer 💾",
-  "Cloud Surfer ☁️ (loves floating servers)",
-  "Git Commit Poet 📝",
-  "Debugging Detective 🔍",
+  "Data Scientist",
+  "Machine Learning Engineer",
+  "AI Enthusiast",
+  "Web Developer",
+  "",
 ]
 
 const DataStream = ({ delay = 0 }: { delay?: number }) => {
@@ -131,13 +124,13 @@ export function Hero() {
   return (
     <section id="home" className="flex items-center justify-between">
       <div className="flex-1">
-        <h1 className="text-4xl font-bold text-foreground mb-2 text-balance">ALEXANDER CHEN</h1>
+        <h1 className="text-4xl font-bold text-foreground mb-2 text-balance">ATHARV MAHAJAN</h1>
         <p className="text-lg text-primary mb-4 transition-all duration-500 min-h-[28px] font-mono">
           {displayedText}
           <span className="animate-pulse">|</span>
         </p>
         <p className="text-base text-muted-foreground max-w-md text-pretty">
-          Passionate about creating elegant solutions to complex problems through clean code and innovative design.
+          I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders.
         </p>
       </div>
       <div className="ml-8 relative">
