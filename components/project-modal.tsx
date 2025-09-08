@@ -52,7 +52,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <h3 className="text-lg font-semibold mb-2">Key Features</h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                 {project.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
+                  <li key={index} className="leading-relaxed">{feature}</li>
                 ))}
               </ul>
             </div>
@@ -61,7 +61,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <h3 className="text-lg font-semibold mb-2">Challenges & Solutions</h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                 {project.challenges.map((challenge, index) => (
-                  <li key={index}>{challenge}</li>
+                  <li key={index} className="leading-relaxed">{challenge}</li>
                 ))}
               </ul>
             </div>
@@ -70,7 +70,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <h3 className="text-lg font-semibold mb-2">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, index) => (
-                  <Badge key={index} variant="secondary">
+                  <Badge key={index} variant="secondary" className="leading-relaxed">
                     {tech}
                   </Badge>
                 ))}
@@ -78,13 +78,13 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </div>
 
             <div className="flex gap-3 pt-4">
-              <Button asChild className="flex-1">
+              <Button variant='ghostTransparent' asChild className="flex-1">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4 mr-2" />
                   View Live Project
                 </a>
               </Button>
-              <Button variant="outline" asChild className="flex-1 bg-transparent">
+              <Button variant="link" asChild className="flex-1 bg-transparent">
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Github className="w-4 h-4 mr-2" />
                   View Source Code

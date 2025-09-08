@@ -7,8 +7,8 @@ const roles = [
   "Data Scientist",
   "Machine Learning Engineer",
   "AI Enthusiast",
+  "Occasionally Overfits ;)",
   "Web Developer",
-  "",
 ]
 
 const DataStream = ({ delay = 0 }: { delay?: number }) => {

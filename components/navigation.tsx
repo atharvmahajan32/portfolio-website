@@ -8,6 +8,7 @@ import { useTheme } from "next-themes"
 export function Navigation() {
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -15,6 +16,22 @@ export function Navigation() {
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+
+      const sections = ["home", "projects", "skills", "contact"]
+      let currentSection: string | null = null
+
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId)
+        if (section) {
+          const rect = section.getBoundingClientRect()
+          if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) {
+            currentSection = sectionId
+            break
+          }
+        }
+      }
+
+      setActiveSection(currentSection)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -61,7 +78,7 @@ export function Navigation() {
             onClick={() => scrollToSection("home")}
             className={`font-medium text-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
-            }`}
+            } ${activeSection === "home" ? "text-primary" : ""}`}
           >
             Home
           </button>
@@ -69,7 +86,7 @@ export function Navigation() {
             onClick={() => scrollToSection("projects")}
             className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
-            }`}
+            } ${activeSection === "projects" ? "text-primary" : ""}`}
           >
             Projects
           </button>
@@ -77,7 +94,7 @@ export function Navigation() {
             onClick={() => scrollToSection("skills")}
             className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
-            }`}
+            } ${activeSection === "skills" ? "text-primary" : ""}`}
           >
             Skills
           </button>
@@ -85,7 +102,7 @@ export function Navigation() {
             onClick={() => scrollToSection("contact")}
             className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
-            }`}
+            } ${activeSection === "contact" ? "text-primary" : ""}`}
           >
             Contact
           </button>

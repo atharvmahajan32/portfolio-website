@@ -130,7 +130,7 @@ export function Projects() {
               <div className="flex gap-2">
                 <Button
                   size="sm"
-                  variant="outline"
+                  variant="prjbtn"
                   className="flex-1 bg-transparent cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation()
@@ -142,7 +142,7 @@ export function Projects() {
                 </Button>
                 <Button
                   size="sm"
-                  variant="outline"
+                  variant="link"
                   className="flex-1 bg-transparent cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation()

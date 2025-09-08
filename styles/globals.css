@@ -117,7 +117,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-none; /* Removed border-border and outline-ring/50 to avoid overriding component styles */
   }
   body {
     @apply bg-background text-foreground;

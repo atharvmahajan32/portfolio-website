@@ -12,6 +12,42 @@ interface SkillDetails {
   yearsOfExperience: number
 }
 
+// Import or define the skillsData variable to fix the issue
+const skillsData: Record<string, SkillDetails> = {
+  Python: {
+    name: "Python",
+    logo: "🐍",
+    proficiency: 90,
+    experience: "Hands-on experience with academic projects and internships, showcasing strong problem-solving skills.",
+    description: "Python is a versatile programming language used for web development, data analysis, and more.",
+    projects: ["Data Analysis Tool", "Web Scraper"],
+    yearsOfExperience: 0.5,
+  },
+  // Add more skills as needed
+};
+
+const logoUrls: { [key: string]: string } = {
+  Python: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+  NumPy: "https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg",
+  Pandas: "https://cdn.worldvectorlogo.com/logos/pandas.svg",
+  "Scikit-Learn": "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+  TensorFlow: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg",
+  NLTK: "https://miro.medium.com/1*YM2HXc7f4v02pZBEO8h-qw.png",
+  PostgreSQL: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+  MySQL: "https://upload.wikimedia.org/wikipedia/commons/0/0a/MySQL_textlogo.svg",
+  LangChain: "https://registry.npmmirror.com/@lobehub/icons-static-png/1.64.0/files/dark/langchain.png",
+  "Gemini API": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png",
+  Docker: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+  AWS: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+  JavaScript: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+  Matplotlib: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg",
+  FastAPI: "https://icon.icepanel.io/Technology/svg/FastAPI.svg",
+  SQLAlchemy: "https://icon.icepanel.io/Technology/png-shadow-512/SQLAlchemy.png",
+  React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+  Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
+  HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+};
+
 interface SkillModalProps {
   skill: SkillDetails | null
   isOpen: boolean
@@ -19,19 +55,53 @@ interface SkillModalProps {
 }
 
 const ModalSkillLogo = ({ skill }: { skill: SkillDetails }) => {
+  const logoUrl = logoUrls[skill.name];
+
+  if (logoUrl) {
+    return (
+      <img
+        src={logoUrl}
+        alt={`${skill.name} logo`}
+        className="w-8 h-8 object-contain"
+      />
+    );
+  }
+
   if (skill.logo.length === 1 || skill.logo.includes("�")) {
-    return <span className="text-2xl">{skill.logo}</span>
+    return <span className="text-2xl">{skill.logo}</span>;
   }
 
   return (
     <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
       <span className="text-sm font-bold text-primary">{skill.logo}</span>
     </div>
-  )
-}
+  );
+};
 
-export function SkillModal({ skill, isOpen, onClose }: SkillModalProps) {
-  if (!skill) return null
+const SkillModal = ({ skill, isOpen, onClose }: { skill: (typeof skillsData)[keyof typeof skillsData] | null; isOpen: boolean; onClose: () => void }) => {
+  if (!skill) return null;
+
+  const logoUrls: { [key: string]: string } = {
+    Python: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    NumPy: "https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg",
+    Pandas: "https://cdn.worldvectorlogo.com/logos/pandas.svg",
+    "Scikit-Learn": "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+    TensorFlow: "https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg",
+    NLTK: "https://miro.medium.com/1*YM2HXc7f4v02pZBEO8h-qw.png",
+    PostgreSQL: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+    MySQL: "https://upload.wikimedia.org/wikipedia/commons/0/0a/MySQL_textlogo.svg",
+    LangChain: "https://registry.npmmirror.com/@lobehub/icons-static-png/1.64.0/files/dark/langchain.png",
+    "Gemini API": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png",
+    Docker: "https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png",
+    AWS: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
+    JavaScript: "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+    Matplotlib: "https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg",
+    FastAPI: "https://icon.icepanel.io/Technology/svg/FastAPI.svg",
+    SQLAlchemy: "https://icon.icepanel.io/Technology/png-shadow-512/SQLAlchemy.png",
+    React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
+    HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+  };
 
   const getProficiencyLabel = (proficiency: number) => {
     if (proficiency >= 90) return "Expert"
@@ -46,7 +116,11 @@ export function SkillModal({ skill, isOpen, onClose }: SkillModalProps) {
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold flex items-center gap-3">
-            <ModalSkillLogo skill={skill} />
+            <img
+              src={logoUrls[skill.name] || `/public/${skill.name.toLowerCase().replace(/\s+/g, '-')}.png`}
+              alt={`${skill.name} logo`}
+              className="w-8 h-8 object-contain"
+            />
             {skill.name}
           </DialogTitle>
         </DialogHeader>
@@ -90,3 +164,5 @@ export function SkillModal({ skill, isOpen, onClose }: SkillModalProps) {
     </Dialog>
   )
 }
+
+export { SkillModal }

@@ -20,6 +20,12 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        ghostTransparent:
+          "bg-[#00AAAB] text-[#121212] shadow-xs hover:text-white transition-colors duration-200 hover:bg-[#00AAAB]/80",
+        prjbtn:
+          "border border-solid text-white shadow-xs hover:text-white transition-colors duration-200 hover:bg-[#00AAAB]/80 hover:text-black", 
+
+
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
