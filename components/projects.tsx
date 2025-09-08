@@ -8,79 +8,89 @@ import { ProjectModal } from "./project-modal"
 
 const projects = [
   {
-    title: "Neural Net",
-    description: "A deep learning framework built with Python and TensorFlow for computer vision applications.",
-    image: "/neural-network-visualization-dashboard.jpg",
-    liveUrl: "#",
-    githubUrl: "#",
-    tech: ["Python", "TensorFlow", "React"],
+    title: "LungCare.ai",
+    description: "LungCare.ai helps healthcare professionals detect and identify lung cancer cell types from histopathological images.",
+    image: "/lungcareai.png",
+    liveUrl: "https://lungcareai.vercel.app/",
+    githubUrl: "https://github.com/theayusharma/LungCareAI",
+    tech: ["React", "TensorFlow", "ViT", "Hugging Face"],
     detailedDescription:
-      "Neural Net is a comprehensive deep learning framework I developed to simplify computer vision tasks. The project combines a powerful Python backend with an intuitive React frontend, making machine learning accessible to developers of all skill levels.",
+      "LungCare.ai is an AI-powered web application designed to assist healthcare professionals in the early detection and classification of lung cancer cell types from histopathological images. By leveraging advanced deep learning models, LungCare.ai provides accurate and efficient analysis, helping to improve diagnostic outcomes.",
     myRole:
-      "As the lead developer, I architected the entire system from scratch, implementing the core neural network algorithms, designing the API architecture, and creating the user interface. I focused on performance optimization and user experience throughout the development process.",
+      "As the ML developer, I Finetuned the entire Google ViT on LC25000 lung and colon cancer dataset, implementing the model inference, designing the API architecture, and helped in creating the user interface. I focused on performance optimization and user experience throughout the development process.",
     challenges: [
-      "Optimized model training performance by implementing custom GPU acceleration, reducing training time by 60%",
-      "Designed a scalable architecture to handle multiple concurrent model training sessions",
-      "Created an intuitive visualization system for complex neural network architectures",
-      "Implemented real-time model performance monitoring and debugging tools",
+      "Developed a full-stack web app enabling lung cancer detection and classification from histopathological images",
+      "Integrated Google’s Vision Transformer (ViT) to achieve 98% accuracy on the LC25000 dataset",
+      "Engineered an efficient tf.data-based preprocessing pipeline, cutting model training time by 15%",
+      "Built a responsive React frontend with Tailwind CSS and deployed the model via Hugging Face Spaces",
     ],
     features: [
-      "Drag-and-drop neural network builder with visual architecture design",
-      "Real-time training progress visualization with loss curves and accuracy metrics",
-      "Pre-trained model library with transfer learning capabilities",
-      "Automated hyperparameter tuning using Bayesian optimization",
-      "Export models to multiple formats (ONNX, TensorFlow Lite, Core ML)",
+      "AI-powered lung cancer detection from histopathological images with high accuracy",
+      "Automatic classification of cancer cell types using Vision Transformer (ViT)",
+      "Interactive and responsive web interface for seamless image upload and diagnosis",
+      "Efficient image preprocessing and augmentation pipeline using TensorFlow's tf.data API",
+      "Model deployed via Hugging Face Spaces for real-time inference and accessibility",
     ],
   },
   {
-    title: "Project Net",
-    description: "Full-stack project management application with real-time collaboration features.",
-    image: "/project-management-dashboard.png",
-    liveUrl: "#",
-    githubUrl: "#",
-    tech: ["Next.js", "Node.js", "PostgreSQL"],
+    title: "AI Fitness Tracker",
+    description: "Real-time rep counting and form feedback with integrated nutrition tracking.",
+    image: "/aifitnesstracker.png",
+    liveUrl: "https://fitness-tracker-cv.streamlit.app/",
+    githubUrl: "https://github.com/atharvmahajan32/Fitness-Tracker",
+    tech: ["Streamlit", "OpenCV", "MediaPipe", "Python"],
+
     detailedDescription:
-      "Project Net is a modern project management platform designed for distributed teams. It combines powerful project tracking capabilities with real-time collaboration features, helping teams stay organized and productive regardless of their location.",
+      "AI-Fitness-Tracker is a real-time computer vision fitness assistant that tracks exercise form, counts reps, and provides visual feedback using webcam input. It helps users improve performance and prevent injuries while also offering integrated nutrition tracking for a holistic fitness experience.",
+
     myRole:
-      "I served as the full-stack developer, responsible for both frontend and backend development. My work included database design, API development, real-time features implementation, and creating a responsive user interface that works seamlessly across all devices.",
+      "I developed the entire application, building the pose estimation pipeline, implementing real-time feedback logic, and designing the interactive user interface in Streamlit. I also integrated nutrition tracking features for a comprehensive fitness tool.",
+
     challenges: [
-      "Implemented WebSocket-based real-time collaboration with conflict resolution algorithms",
-      "Designed a scalable database schema supporting complex project hierarchies and permissions",
-      "Built a notification system handling 10,000+ daily notifications with smart batching",
-      "Created an advanced search system with full-text search and filtering capabilities",
+      "Optimized real-time pose estimation to run at 30 FPS on standard webcams using OpenCV and MediaPipe",
+      "Calculated joint angles to score form accuracy and provide corrective feedback for injury prevention",
+      "Handled noisy or partial pose detections with smoothing and error handling logic",
+      "Designed an intuitive UI in Streamlit combining both exercise and nutrition tracking in one interface",
     ],
+
     features: [
-      "Real-time collaborative task boards with drag-and-drop functionality",
-      "Advanced project analytics with customizable dashboards and reporting",
-      "Time tracking with automatic productivity insights and team performance metrics",
-      "Integration with popular tools like Slack, GitHub, and Google Workspace",
-      "Mobile-responsive design with offline capability for essential features",
+      "Real-time exercise rep counting for squats, pushups, and bicep curls using computer vision",
+      "Visual feedback system with form scoring based on joint angle analysis",
+      "Nutrition Tracker to log meals, monitor macros, and track daily intake",
+      "Lightweight design optimized for browser-based use without dedicated GPUs",
+      "Interactive Streamlit interface with easy-to-use controls and performance summaries",
     ],
+
   },
   {
-    title: "Wallet Net",
-    description: "Secure cryptocurrency wallet with multi-chain support and DeFi integration.",
-    image: "/cryptocurrency-wallet-interface.jpg",
+    title: "LyftSync",
+    description: "a peer-to-peer ride-sharing platform to reduce urban congestion and fuel consumption.",
+    image: "/lyftsync.png",
     liveUrl: "#",
-    githubUrl: "#",
-    tech: ["React", "Web3.js", "Solidity"],
+    githubUrl: "https://github.com/LyftSync",
+    tech: ["React Native", "Node.js", "MongoDB"],
     detailedDescription:
-      "Wallet Net is a next-generation cryptocurrency wallet that prioritizes security while providing seamless access to decentralized finance (DeFi) protocols. The application supports multiple blockchain networks and offers advanced portfolio management features.",
+      "LyftSync is a peer-to-peer ride-sharing mobile app designed to reduce urban congestion and fuel consumption by connecting commuters traveling similar routes. It uses AI-powered route matching and real-time GPS tracking to optimize shared rides, promote environmental benefits, and foster a community-driven transport system.",
+
     myRole:
-      "I led the development of this Web3 application, focusing on smart contract integration, security implementation, and user experience design. My responsibilities included writing secure smart contracts, implementing wallet connectivity, and creating an intuitive interface for complex DeFi operations.",
+      "Designed the UI/UX and developed the frontend using React Native.",
+
     challenges: [
-      "Implemented multi-signature wallet functionality with hardware wallet support for enhanced security",
-      "Built cross-chain bridge integration allowing seamless asset transfers between different blockchains",
-      "Created a gas optimization engine that reduces transaction costs by up to 40%",
-      "Developed a comprehensive security audit system with real-time threat detection",
+      "Developed AI-driven route matching to optimize ride sharing with minimal detours",
+      "Implemented real-time GPS tracking and notifications for ride transparency and safety",
+      "Designed scalable backend architecture to support high traffic and concurrent users",
+      "Integrated secure ID verification and emergency contact features to ensure user trust",
     ],
+
     features: [
-      "Support for 15+ blockchain networks including Ethereum, Polygon, and Binance Smart Chain",
-      "Integrated DeFi protocols for yield farming, staking, and liquidity provision",
-      "Advanced portfolio analytics with profit/loss tracking and tax reporting",
-      "Built-in DEX aggregator for optimal trade execution across multiple exchanges",
-      "Hardware wallet integration with Ledger and Trezor for maximum security",
+      "AI-powered optimized route matching for efficient shared rides",
+      "Real-time ride tracking with Google Maps API integration",
+      "User profile management with preferences and frequent routes",
+      "In-app payment system with optional cost splitting",
+      "Community features including ratings, groups, and incentive systems",
+      "Emergency SOS button and ID verification for enhanced safety",
     ],
+
   },
 ]
 

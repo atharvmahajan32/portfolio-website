@@ -152,9 +152,9 @@ const SkillModal = ({ skill, isOpen, onClose }: { skill: (typeof skillsData)[key
           {skill.projects.length > 0 && (
             <div>
               <h3 className="text-lg font-semibold mb-2">Projects Using This Skill</h3>
-              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <ul className="list-disc list-outside pl-6 space-y-2 leading-7 text-foreground marker:text-primary/70">
                 {skill.projects.map((project, index) => (
-                  <li key={index}>{project}</li>
+                  <li key={index} className="text-sm">{project}</li>
                 ))}
               </ul>
             </div>

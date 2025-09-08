@@ -50,18 +50,18 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
 
             <div>
               <h3 className="text-lg font-semibold mb-2">Key Features</h3>
-              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <ul className="list-disc list-outside pl-6 space-y-2 leading-7 text-foreground marker:text-primary/70">
                 {project.features.map((feature, index) => (
-                  <li key={index} className="leading-relaxed">{feature}</li>
+                  <li key={index} className="text-sm">{feature}</li>
                 ))}
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-2">Challenges & Solutions</h3>
-              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+              <ul className="list-disc list-outside pl-6 space-y-2 leading-7 text-foreground marker:text-primary/70">
                 {project.challenges.map((challenge, index) => (
-                  <li key={index} className="leading-relaxed">{challenge}</li>
+                  <li key={index} className="text-sm">{challenge}</li>
                 ))}
               </ul>
             </div>
@@ -70,7 +70,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <h3 className="text-lg font-semibold mb-2">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, index) => (
-                  <Badge key={index} variant="secondary" className="leading-relaxed">
+                  <Badge key={index} variant="secondary">
                     {tech}
                   </Badge>
                 ))}
@@ -78,7 +78,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
             </div>
 
             <div className="flex gap-3 pt-4">
-              <Button variant='ghostTransparent' asChild className="flex-1">
+              <Button asChild className="flex-1">
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="w-4 h-4 mr-2" />
                   View Live Project

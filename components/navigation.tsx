@@ -12,31 +12,42 @@ export function Navigation() {
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    setMounted(true)
+    setMounted(true);
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setIsScrolled(window.scrollY > 50);
+    };
 
-      const sections = ["home", "projects", "skills", "contact"]
-      let currentSection: string | null = null
+    const handleMouseMove = (event: MouseEvent) => {
+      const sections = ["home", "projects", "skills", "contact"];
+      let currentSection: string | null = null;
 
       for (const sectionId of sections) {
-        const section = document.getElementById(sectionId)
+        const section = document.getElementById(sectionId);
         if (section) {
-          const rect = section.getBoundingClientRect()
-          if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) {
-            currentSection = sectionId
-            break
+          const rect = section.getBoundingClientRect();
+          if (
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom
+          ) {
+            currentSection = sectionId;
+            break;
           }
         }
       }
 
-      setActiveSection(currentSection)
-    }
+      setActiveSection(currentSection);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)

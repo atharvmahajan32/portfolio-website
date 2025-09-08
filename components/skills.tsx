@@ -52,7 +52,7 @@ const skillsData = {
   "Scikit-Learn": {
     name: "Scikit-Learn",
     logo: "📈",
-    proficiency: 85,
+    proficiency: 95,
     yearsOfExperience: 2,
     description:
       "Scikit-Learn is a library I have mastered for building and optimizing machine learning models.",
@@ -67,7 +67,7 @@ const skillsData = {
   TensorFlow: {
     name: "TensorFlow",
     logo: "🤖",
-    proficiency: 80,
+    proficiency: 90,
     yearsOfExperience: 2,
     description:
       "TensorFlow is a framework I have mastered for developing and deploying deep learning models.",
@@ -112,7 +112,7 @@ const skillsData = {
   MySQL: {
     name: "MySQL",
     logo: "🐬",
-    proficiency: 85,
+    proficiency: 90,
     yearsOfExperience: 3,
     description:
       "MySQL is a database I have mastered for efficient data storage and retrieval in large-scale projects.",
@@ -142,8 +142,8 @@ const skillsData = {
   "Gemini API": {
     name: "Gemini API",
     logo: "💎",
-    proficiency: 75,
-    yearsOfExperience: 2,
+    proficiency: 85,
+    yearsOfExperience: 1,
     description:
       "Gemini API is a tool I have mastered for cryptocurrency trading and market analysis.",
     experience:
@@ -157,7 +157,7 @@ const skillsData = {
   Docker: {
     name: "Docker",
     logo: "🐳",
-    proficiency: 85,
+    proficiency: 65,
     yearsOfExperience: 1,
     description:
       "Docker is a tool I have mastered for containerizing applications and managing scalable environments.",
@@ -172,7 +172,7 @@ const skillsData = {
   AWS: {
     name: "AWS",
     logo: "☁️",
-    proficiency: 80,
+    proficiency: 62,
     yearsOfExperience: 1,
     description:
       "AWS is a cloud platform I have mastered for deploying and managing scalable applications.",
@@ -202,7 +202,7 @@ const skillsData = {
   Matplotlib: {
     name: "Matplotlib",
     logo: "📊",
-    proficiency: 85,
+    proficiency: 95,
     yearsOfExperience: 3,
     description:
       "Matplotlib is a library I have mastered for creating advanced data visualizations.",
@@ -217,8 +217,8 @@ const skillsData = {
   FastAPI: {
     name: "FastAPI",
     logo: "⚡",
-    proficiency: 85,
-    yearsOfExperience: 3,
+    proficiency: 65,
+    yearsOfExperience: 1,
     description:
       "FastAPI is a framework I have mastered for building high-performance APIs.",
     experience:
@@ -232,7 +232,7 @@ const skillsData = {
   SQLAlchemy: {
     name: "SQLAlchemy",
     logo: "🛠️",
-    proficiency: 85,
+    proficiency: 75,
     yearsOfExperience: 3,
     description:
       "SQLAlchemy is a library I have mastered for database management and ORM.",
@@ -262,8 +262,8 @@ const skillsData = {
   Seaborn: {
     name: "Seaborn",
     logo: "📈",
-    proficiency: 85,
-    yearsOfExperience: 3,
+    proficiency: 95,
+    yearsOfExperience: 2,
     description:
       "Seaborn is a library I have mastered for creating statistical data visualizations.",
     experience:
@@ -277,8 +277,8 @@ const skillsData = {
   HuggingFace: {
     name: "HuggingFace",
     logo: "🤗",
-    proficiency: 80,
-    yearsOfExperience: 2,
+    proficiency: 70,
+    yearsOfExperience: 1,
     description:
       "HuggingFace is a library I have mastered for natural language processing and working with pre-trained models.",
     experience:
@@ -306,6 +306,7 @@ const skillCategories = [
   },
 ]
 
+// Adjusted the size of skill buttons and logos for better mobile view
 const SkillLogo = ({ skill }: { skill: string }) => {
   const skillData = skillsData[skill as keyof typeof skillsData]
 
@@ -332,7 +333,7 @@ const SkillLogo = ({ skill }: { skill: string }) => {
   }
 
   return (
-    <div className="w-6 h-6 rounded bg-primary/10 flex items-center justify-center">
+    <div className="w-5 h-5 md:w-7 md:h-7 rounded bg-primary/10 flex items-center justify-center">
       <img
         src={logoUrls[skill] || `/public/${skillData.name.toLowerCase().replace(/\s+/g, '-')}.png`}
         alt={`${skillData.name} logo`}
@@ -366,17 +367,17 @@ export function Skills() {
         {skillCategories.map((category, index) => (
           <div key={index}>
             <h3 className="text-lg font-semibold text-foreground mb-3">{category.title}</h3>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2">
               {category.skills.map((skill, skillIndex) => (
                 <button
                   key={skillIndex}
-                  className="group flex items-center gap-3 px-4 py-3 bg-card border border-border rounded-xl hover:border-primary hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer hover:bg-primary/5"
+                  className="group flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer hover:bg-primary/5"
                   onClick={() => handleSkillClick(skill)}
                 >
                   <div className="group-hover:scale-110 transition-transform duration-200">
                     <SkillLogo skill={skill} />
                   </div>
-                  <span className="font-medium text-foreground group-hover:text-primary transition-colors duration-200">
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-200">
                     {skill}
                   </span>
                 </button>

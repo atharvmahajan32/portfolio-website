@@ -10,6 +10,9 @@ import "./globals.css"
 export const metadata: Metadata = {
   title: "Atharv Mahajan - Data Scientist & ML Engineer",
   description: "Portfolio of Atharv Mahajan, Data Scientist",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+  },
 }
 
 export default function RootLayout({
