@@ -23,7 +23,7 @@ const buttonVariants = cva(
         ghostTransparent:
           "bg-[#00AAAB] text-[#121212] shadow-xs hover:text-white transition-colors duration-200 hover:bg-[#00AAAB]/80",
         prjbtn:
-          "border border-solid text-white shadow-xs hover:text-white transition-colors duration-200 hover:bg-[#00AAAB] hover:text-black", 
+          "text-[#4d4c4c] shadow-xs transition-colors duration-200 bg-[#D4ECED] border-0 hover:bg-[#00AAAB] hover:text-black dark:bg-transparent dark:border dark:border-solid dark:text-white dark:hover:bg-[#00AAAB] dark:hover:text-black", 
 
 
       },

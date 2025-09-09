@@ -289,6 +289,21 @@ const skillsData = {
       "Explored HuggingFace's advanced features for optimization",
     ],
   },
+  n8n: {
+    name: "n8n",
+    logo: "🔄",
+    proficiency: 70,
+    yearsOfExperience: 1,
+    description:
+      "n8n is an open-source, extensible workflow automation tool for connecting APIs, services, and data pipelines with low-code nodes.",
+    experience:
+      "Used n8n to orchestrate data workflows, integrate third-party APIs, and prototype automation for ETL, notifications, and AI-assisted pipelines.",
+    projects: [
+      "Built automation to sync data between internal services and external APIs",
+      "Created webhook-driven notification and reporting flows",
+      "Integrated LLM inference steps into multi-stage processing pipelines",
+    ],
+  },
 }
 
 const skillCategories = [
@@ -298,7 +313,7 @@ const skillCategories = [
   },
   {
     title: "Databases & Tools",
-    skills: ["PostgreSQL", "MySQL", "LangChain", "Gemini API", "Matplotlib", "Seaborn", "HuggingFace"],
+    skills: ["PostgreSQL", "MySQL", "LangChain", "Gemini API", "Matplotlib", "Seaborn", "HuggingFace", "n8n"],
   },
   {
     title: "Cloud & DevOps",
@@ -330,6 +345,7 @@ const SkillLogo = ({ skill }: { skill: string }) => {
     React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
     HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+    n8n: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/n8n-color.png",
   }
 
   return (
