@@ -46,7 +46,6 @@ const logoUrls: { [key: string]: string } = {
   React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
   Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
   HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
-  n8n: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/n8n-color.png",
 };
 
 interface SkillModalProps {
@@ -102,7 +101,6 @@ const SkillModal = ({ skill, isOpen, onClose }: { skill: (typeof skillsData)[key
     React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
     HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
-    n8n: "https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png",
   };
 
   const getProficiencyLabel = (proficiency: number) => {

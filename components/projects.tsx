@@ -141,7 +141,7 @@ export function Projects() {
                 <Button
                   size="sm"
                   variant="prjbtn"
-                  className="flex-1 cursor-pointer"
+                  className="flex-1 bg-transparent cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation()
                     window.open(project.liveUrl, "_blank")
