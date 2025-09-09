@@ -184,6 +184,21 @@ const skillsData = {
       "Developed prototypes for cloud-based solutions",
     ],
   },
+  n8n: {
+    name: "n8n",
+    logo: "🔁",
+    proficiency: 70,
+    yearsOfExperience: 1,
+    description:
+      "n8n is a workflow automation platform I use to integrate APIs, automate data pipelines, and orchestrate ML-related tasks.",
+    experience:
+      "I have built multi-step automations connecting services like PostgreSQL, webhooks, OpenAI/HuggingFace models, and email/SaaS tools to streamline data processing and model deployment workflows.",
+    projects: [
+      "Implemented automated data ingestion and preprocessing pipelines feeding ML models",
+      "Orchestrated model inference workflows triggered by external webhooks",
+      "Integrated monitoring and alerting flows for deployed ML endpoints",
+    ],
+  },
   JavaScript: {
     name: "JavaScript",
     logo: "📜",
@@ -237,22 +252,7 @@ const skillsData = {
     description:
       "SQLAlchemy is a library I have mastered for database management and ORM.",
     experience:
-      "I have used SQLAlchemy extensively for designing schemas, managing databases, and optimizing queries.",
-    projects: [
-      "Developed database schemas for enterprise applications",
-      "Implemented ORM for seamless database interactions",
-      "Optimized database queries using SQLAlchemy",
-    ],
-  },
-  React: {
-    name: "React",
-    logo: "⚛️",
-    proficiency: 90,
-    yearsOfExperience: 4,
-    description:
-      "React is a library I have mastered for building modern, scalable front-end applications.",
-    experience:
-      "I have developed complex user interfaces and single-page applications using React, including state management and component-based architecture.",
+      "I have used SQLAlchemy extensively for ORM-based data modeling, migrations, session management, and composing optimized queries across PostgreSQL and MySQL backends.",
     projects: [
       "Built scalable front-end applications using React",
       "Integrated React with back-end APIs",
@@ -289,6 +289,21 @@ const skillsData = {
       "Explored HuggingFace's advanced features for optimization",
     ],
   },
+  React: {
+    name: "React",
+    logo: "⚛️",
+    proficiency: 80,
+    yearsOfExperience: 2,
+    description:
+      "React is my primary front-end library for building component-driven, performant web interfaces.",
+    experience:
+      "Built SPA dashboards, interactive data visualizations, and reusable design system components with hooks, context, dynamic routing, and API integrations.",
+    projects: [
+      "Developed a real-time analytics dashboard with dynamic chart components",
+      "Implemented a modular component library shared across multiple apps",
+      "Optimized bundle size and interaction performance using code-splitting and memoization",
+    ],
+  },
 }
 
 const skillCategories = [
@@ -298,7 +313,7 @@ const skillCategories = [
   },
   {
     title: "Databases & Tools",
-    skills: ["PostgreSQL", "MySQL", "LangChain", "Gemini API", "Matplotlib", "Seaborn", "HuggingFace"],
+    skills: ["PostgreSQL", "MySQL", "LangChain", "Gemini API", "Matplotlib", "Seaborn", "HuggingFace", "n8n"],
   },
   {
     title: "Cloud & DevOps",
@@ -309,6 +324,13 @@ const skillCategories = [
 // Adjusted the size of skill buttons and logos for better mobile view
 const SkillLogo = ({ skill }: { skill: string }) => {
   const skillData = skillsData[skill as keyof typeof skillsData]
+  if (!skillData) {
+    return (
+      <div className="w-5 h-5 md:w-7 md:h-7 rounded bg-primary/10 flex items-center justify-center text-[10px] md:text-xs font-medium">
+        {skill.substring(0, 3)}
+      </div>
+    )
+  }
 
   const logoUrls: { [key: string]: string } = {
     Python: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
@@ -330,6 +352,7 @@ const SkillLogo = ({ skill }: { skill: string }) => {
     React: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     Seaborn: "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg",
     HuggingFace: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+    n8n: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/n8n-color.png",
   }
 
   return (
