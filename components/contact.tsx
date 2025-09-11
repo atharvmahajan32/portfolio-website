@@ -73,7 +73,7 @@ export function Contact() {
           <div className="flex flex-col space-y-3">
             <Button
               variant="link"
-              className="justify-start bg-transparent hover:bg-theme-color hover:text-white hover:cursor-pointer"
+              className="justify-start bg-transparent hover:bg-theme-color dark:hover:text-white hover:text-black hover:cursor-pointer"
               onClick={() => window.location.href = 'mailto:m.atharv063@gmail.com'}
             >
               <Mail className="w-4 h-4 mr-2" />
@@ -81,7 +81,7 @@ export function Contact() {
             </Button>
             <Button
               variant="link"
-              className="justify-start bg-transparent hover:bg-theme-color hover:text-white hover:cursor-pointer"
+              className="justify-start bg-transparent hover:bg-theme-color dark:hover:text-white hover:text-black hover:cursor-pointer"
               onClick={() => window.open('https://github.com/atharvmahajan32', '_blank')}
             >
               <Github className="w-4 h-4 mr-2" />
@@ -89,7 +89,7 @@ export function Contact() {
             </Button>
             <Button
               variant="link"
-              className="justify-start bg-transparent hover:bg-theme-color hover:text-white hover:cursor-pointer"
+              className="justify-start bg-transparent hover:bg-theme-color dark:hover:text-white hover:text-black hover:cursor-pointer"
               onClick={() => window.open('https://linkedin.com/in/atharvmahajan63', '_blank')}
             >
               <Linkedin className="w-4 h-4 mr-2" />
@@ -97,7 +97,7 @@ export function Contact() {
             </Button>
             <Button
               variant="link"
-              className="justify-start bg-transparent hover:bg-theme-color hover:text-white hover:cursor-pointer"
+              className="justify-start bg-transparent hover:bg-theme-color dark:hover:text-white hover:text-black hover:cursor-pointer"
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = 'Atharv_Mahajan.pdf';
