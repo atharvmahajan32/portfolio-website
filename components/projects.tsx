@@ -63,35 +63,32 @@ const projects = [
 
   },
   {
-    title: "LyftSync",
-    description: "a peer-to-peer ride-sharing platform to reduce urban congestion and fuel consumption.",
-    image: "/lyftsync.png",
-    liveUrl: "#",
-    githubUrl: "https://github.com/LyftSync",
-    tech: ["React Native", "Node.js", "MongoDB"],
-    detailedDescription:
-      "LyftSync is a peer-to-peer ride-sharing mobile app designed to reduce urban congestion and fuel consumption by connecting commuters traveling similar routes. It uses AI-powered route matching and real-time GPS tracking to optimize shared rides, promote environmental benefits, and foster a community-driven transport system.",
-
-    myRole:
-      "Designed the UI/UX and developed the frontend using React Native.",
-
-    challenges: [
-      "Developed AI-driven route matching to optimize ride sharing with minimal detours",
-      "Implemented real-time GPS tracking and notifications for ride transparency and safety",
-      "Designed scalable backend architecture to support high traffic and concurrent users",
-      "Integrated secure ID verification and emergency contact features to ensure user trust",
+    "title": "Customer Churn Predictor",
+    "description": "An AI-powered Streamlit web app that predicts customer churn for a bank based on user inputs and a trained deep learning model.",
+    "image": "/churn-predictor.png",
+    "liveUrl": "https://cst-churn-prediction.streamlit.app/",
+    "githubUrl": "https://github.com/atharvmahajan32/Churn-Prediction",
+    "tech": ["TensorFlow", "Keras", "Streamlit", "Scikit-learn", "Pandas"],
+    "detailedDescription":
+      "Customer Churn Predictor is a web-based application that uses a deep learning model to estimate the probability of a bank customer churning based on demographic and account activity data. Built with TensorFlow and deployed using Streamlit, the app includes data preprocessing pipelines, encoding for categorical features, scaling, and real-time predictions. It offers an intuitive UI with customized styling and real-time interactivity to support customer retention strategies.",
+    "myRole":
+      "Developed the complete machine learning pipeline and designed the interactive frontend using Streamlit. Handled model training, preprocessing, deployment, and UI styling.",
+    "challenges": [
+      "Built a custom Keras-based neural network model for binary classification",
+      "Implemented secure and cached loading for large model files and encoders to optimize performance",
+      "Handled dynamic input transformation including encoding and scaling for real-time predictions",
+      "Designed a responsive and styled user interface using custom CSS within Streamlit"
     ],
-
-    features: [
-      "AI-powered optimized route matching for efficient shared rides",
-      "Real-time ride tracking with Google Maps API integration",
-      "User profile management with preferences and frequent routes",
-      "In-app payment system with optional cost splitting",
-      "Community features including ratings, groups, and incentive systems",
-      "Emergency SOS button and ID verification for enhanced safety",
-    ],
-
-  },
+    "features": [
+      "Deep learning model to predict customer churn probability",
+      "Real-time prediction with input-based probability and class label (Churn or Stay)",
+      "Encoders and scaler for handling categorical and numerical inputs",
+      "Cached model and transformer loading for fast performance",
+      "Intuitive UI with CSS-styled inputs and result display",
+      "Thread-safe prediction execution to prevent concurrency issues"
+    ]
+  }
+  
 ]
 
 export function Projects() {
