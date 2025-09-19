@@ -64,7 +64,7 @@ const projects = [
   },
   {
     "title": "Customer Churn Predictor",
-    "description": "An AI-powered Streamlit web app that predicts customer churn for a bank based on user inputs and a trained deep learning model.",
+    "description": "An AI-powered Streamlit app that predicts bank customer churn based on user inputs.",
     "image": "/churn-predictor.png",
     "liveUrl": "https://cst-churn-prediction.streamlit.app/",
     "githubUrl": "https://github.com/atharvmahajan32/Churn-Prediction",
