@@ -52,7 +52,7 @@ export function Contact() {
                 <Button 
                   variant='link'
                   className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
-                  onClick={() => window.open('https://academy.langchain.com/certificates/u2ezhckt8p', '_blank')}>
+                  onClick={() => window.open('https://academy.langchain.com/certificates/ahnipwj2nw', '_blank')}>
                   View Credentials
                 </Button>
               </li>
