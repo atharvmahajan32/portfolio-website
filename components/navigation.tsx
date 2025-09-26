@@ -67,7 +67,7 @@ export function Navigation() {
 
   if (!mounted) {
     return (
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out">
         <div className="bg-background/70 backdrop-blur-xl border border-border rounded-full shadow-lg px-6 py-3">
           <div className="flex items-center space-x-6">
             <div className="w-12 h-6 bg-muted animate-pulse rounded"></div>
@@ -78,42 +78,57 @@ export function Navigation() {
   }
 
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out">
       <div
-        className={`bg-background/70 backdrop-blur-xl border border-border rounded-full shadow-lg transition-all duration-300 ${
+        className={`bg-background/70 backdrop-blur-xl border border-border rounded-full shadow-lg transition-all duration-500 ease-in-out ${
           isScrolled ? "px-4 py-2" : "px-6 py-3"
         }`}
+        style={{
+          transition: 'padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
       >
         <div className="flex items-center space-x-6">
           <button
             onClick={() => scrollToSection("home")}
-            className={`font-medium text-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
+            className={`font-medium text-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
             } ${activeSection === "home" ? "text-primary" : ""}`}
+            style={{
+              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+            }}
           >
             Home
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
             } ${activeSection === "projects" ? "text-primary" : ""}`}
+            style={{
+              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+            }}
           >
             Projects
           </button>
           <button
             onClick={() => scrollToSection("skills")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
             } ${activeSection === "skills" ? "text-primary" : ""}`}
+            style={{
+              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+            }}
           >
             Skills
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-200 cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
               isScrolled ? "text-xs" : "text-sm"
             } ${activeSection === "contact" ? "text-primary" : ""}`}
+            style={{
+              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+            }}
           >
             Contact
           </button>
@@ -125,13 +140,23 @@ export function Navigation() {
               e.stopPropagation()
               setTheme(theme === "dark" ? "light" : "dark")
             }}
-            className="ml-2 transition-all duration-300 cursor-pointer hover:bg-accent"
+            className="ml-2 transition-all duration-500 ease-in-out cursor-pointer hover:bg-accent"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
-              <Sun className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-transform duration-200`} />
+              <Sun 
+                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-500 ease-in-out`} 
+                style={{
+                  transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              />
             ) : (
-              <Moon className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-transform duration-200`} />
+              <Moon 
+                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-500 ease-in-out`}
+                style={{
+                  transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
+              />
             )}
           </Button>
         </div>
