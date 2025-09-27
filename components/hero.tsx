@@ -16,6 +16,7 @@ const DataStream = ({ delay = 0 }: { delay?: number }) => {
   const characters = [
     "0",
     "1",
+    "*",
     "#",
     "@",
     "&",
