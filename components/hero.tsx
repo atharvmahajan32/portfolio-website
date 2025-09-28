@@ -147,10 +147,10 @@ export function Hero({ showName = true, showContent = false }: { showName?: bool
   }, [])
 
   return (
-    <section id="home" className="flex items-center justify-between">
-      <div className="flex-1">
+    <section id="home" className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative">
+      <div className="flex-1 relative z-10">
         {/* ONLY THE NAME - visible when showName is true */}
-        <h1 className={`text-4xl font-bold text-foreground mb-2 text-balance transition-opacity duration-300 ${
+        <h1 className={`text-3xl sm:text-4xl font-bold text-foreground mb-2 text-balance transition-opacity duration-300 ${
           showName ? 'opacity-100' : 'opacity-0'
         }`}>
           {showName && nameLetters.map((letter, index) => (
@@ -176,37 +176,50 @@ export function Hero({ showName = true, showContent = false }: { showName?: bool
           <div className={`transition-all duration-800 ease-out ${
             showContent ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-2'
           }`}>
-            <p className="text-lg text-primary mb-4 transition-all duration-500 min-h-[28px] font-mono">
+            <p className="text-base sm:text-lg text-primary mb-4 transition-all duration-500 min-h-[24px] sm:min-h-[28px] font-mono">
               {displayedText}
               <span className="animate-pulse">|</span>
             </p>
-            <p className="text-base text-muted-foreground max-w-md text-pretty">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-full sm:max-w-md text-pretty leading-relaxed">
               I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders.
             </p>
           </div>
         )}
       </div>
       
-      {/* Icon - only show when showContent is true */}
+      {/* Icon - Desktop version */}
       {showContent && (
-        <div className={`ml-8 relative transition-all duration-1000 ease-out ${
+        <div className={`hidden sm:block ml-8 relative transition-all duration-1000 ease-out ${
           showContent ? 'opacity-100 translate-x-0 scale-100 delay-500' : 'opacity-0 translate-x-4 scale-90'
         }`}>
-          <div className="w-32 h-32 relative overflow-hidden">
+          <div className="w-24 lg:w-32 h-24 lg:h-32 relative overflow-hidden">
             {/* Subtle background circle */}
-            <div className="absolute inset-4 rounded-full bg-primary/5 border border-primary/10"></div>
+            <div className="absolute inset-3 lg:inset-4 rounded-full bg-primary/5 border border-primary/10"></div>
 
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="animate-spin" style={{ animationDuration: "40s" }}>
-                <Database className="w-8 h-8 text-primary/80" />
+                <Database className="w-6 lg:w-8 h-6 lg:h-8 text-primary/80" />
               </div>
             </div>
 
             <div key={streamKey} className="absolute inset-0">
-              {Array.from({ length: 6 }, (_, i) => (
+              {Array.from({ length: 4 }, (_, i) => (
                 <DataStream key={i} delay={Math.random() * 800} />
               ))}
             </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Mobile Data Stream - Positioned behind text */}
+      {showContent && (
+        <div className={`sm:hidden absolute inset-0 pointer-events-none transition-all duration-1000 ease-out ${
+          showContent ? 'opacity-30 delay-500' : 'opacity-0'
+        }`}>
+          <div key={streamKey} className="absolute inset-0">
+            {Array.from({ length: 3 }, (_, i) => (
+              <DataStream key={`mobile-${i}`} delay={Math.random() * 800} />
+            ))}
           </div>
         </div>
       )}
