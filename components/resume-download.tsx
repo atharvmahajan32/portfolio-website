@@ -9,11 +9,9 @@ export function ResumeDownload() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerWidth <= 768) { // Mobile view
-        const scrollPosition = window.scrollY + window.innerHeight
-        const bottomPosition = document.body.scrollHeight
-        setIsVisible(scrollPosition < bottomPosition - 50) // Hide when near bottom
-      }
+      const scrollPosition = window.scrollY + window.innerHeight
+      const bottomPosition = document.body.scrollHeight
+      setIsVisible(scrollPosition < bottomPosition - 50) // Hide when near bottom
     }
 
     window.addEventListener("scroll", handleScroll)
