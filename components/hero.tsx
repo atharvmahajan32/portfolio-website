@@ -65,15 +65,36 @@ const DataStream = ({ delay = 0 }: { delay?: number }) => {
   )
 }
 
-export function Hero() {
+export function Hero({ showName = true, showContent = false }: { showName?: boolean; showContent?: boolean }) {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
   const [streamKey, setStreamKey] = useState(0)
   const [displayedText, setDisplayedText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)
   const [typingIndex, setTypingIndex] = useState(0)
   const [isTypingComplete, setIsTypingComplete] = useState(false)
+  
+  // Letter-by-letter animation for name
+  const [visibleLetters, setVisibleLetters] = useState(0)
+  const nameLetters = "ATHARV MAHAJAN".split("")
+
+  // Animate letters when showName becomes true
+  useEffect(() => {
+    if (showName && visibleLetters < nameLetters.length) {
+      const timer = setTimeout(() => {
+        setVisibleLetters(prev => prev + 1)
+      }, 60) // Reduced from 120ms to 60ms for faster animation
+
+      return () => clearTimeout(timer)
+    }
+  }, [showName, visibleLetters, nameLetters.length])
+
+  // Only start role typing animation when name is fully visible AND showContent is true
+  const shouldShowRoleAnimation = showName && visibleLetters >= nameLetters.length && showContent
 
   useEffect(() => {
+    // Only run role animation if name is complete
+    if (!shouldShowRoleAnimation) return
+
     const currentRole = roles[currentRoleIndex]
 
     if (isDeleting) {
@@ -98,9 +119,12 @@ export function Hero() {
         setIsTypingComplete(true)
       }
     }
-  }, [displayedText, isDeleting, typingIndex, currentRoleIndex, isTypingComplete])
+  }, [displayedText, isDeleting, typingIndex, currentRoleIndex, isTypingComplete, shouldShowRoleAnimation])
 
   useEffect(() => {
+    // Only start role cycling if role animation should be shown
+    if (!shouldShowRoleAnimation) return
+
     const interval = setInterval(() => {
       if (isTypingComplete) {
         setIsDeleting(true)
@@ -109,7 +133,7 @@ export function Hero() {
     }, 5000) // 0.7s typing + 3s pause + 0.2s deletion + buffer
 
     return () => clearInterval(interval)
-  }, [isTypingComplete])
+  }, [isTypingComplete, shouldShowRoleAnimation])
 
   useEffect(() => {
     const streamInterval = setInterval(
@@ -125,33 +149,67 @@ export function Hero() {
   return (
     <section id="home" className="flex items-center justify-between">
       <div className="flex-1">
-        <h1 className="text-4xl font-bold text-foreground mb-2 text-balance">ATHARV MAHAJAN</h1>
-        <p className="text-lg text-primary mb-4 transition-all duration-500 min-h-[28px] font-mono">
-          {displayedText}
-          <span className="animate-pulse">|</span>
-        </p>
-        <p className="text-base text-muted-foreground max-w-md text-pretty">
-          I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders.
-        </p>
+        {/* ONLY THE NAME - visible when showName is true */}
+        <h1 className={`text-4xl font-bold text-foreground mb-2 text-balance transition-opacity duration-300 ${
+          showName ? 'opacity-100' : 'opacity-0'
+        }`}>
+          {showName && nameLetters.map((letter, index) => (
+            <span
+              key={index}
+              className={`inline-block transition-all duration-700 ease-out ${
+                index < visibleLetters
+                  ? 'opacity-100 transform translate-y-0 scale-100'
+                  : 'opacity-0 transform translate-y-6 scale-75'
+              } ${letter === ' ' ? 'w-2' : ''}`}
+              style={{
+                transitionDelay: `${index * 60}ms`, // Reduced from 100ms to 60ms to match faster timing
+                filter: index < visibleLetters ? 'none' : 'blur(2px)',
+              }}
+            >
+              {letter === ' ' ? '\u00A0' : letter}
+            </span>
+          ))}
+        </h1>
+        
+        {/* EVERYTHING ELSE - only visible when showContent is true */}
+        {showContent && (
+          <div className={`transition-all duration-800 ease-out ${
+            showContent ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-2'
+          }`}>
+            <p className="text-lg text-primary mb-4 transition-all duration-500 min-h-[28px] font-mono">
+              {displayedText}
+              <span className="animate-pulse">|</span>
+            </p>
+            <p className="text-base text-muted-foreground max-w-md text-pretty">
+              I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders.
+            </p>
+          </div>
+        )}
       </div>
-      <div className="ml-8 relative">
-        <div className="w-32 h-32 relative overflow-hidden">
-          {/* Subtle background circle */}
-          <div className="absolute inset-4 rounded-full bg-primary/5 border border-primary/10"></div>
+      
+      {/* Icon - only show when showContent is true */}
+      {showContent && (
+        <div className={`ml-8 relative transition-all duration-1000 ease-out ${
+          showContent ? 'opacity-100 translate-x-0 scale-100 delay-500' : 'opacity-0 translate-x-4 scale-90'
+        }`}>
+          <div className="w-32 h-32 relative overflow-hidden">
+            {/* Subtle background circle */}
+            <div className="absolute inset-4 rounded-full bg-primary/5 border border-primary/10"></div>
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="animate-spin" style={{ animationDuration: "40s" }}>
-              <Database className="w-8 h-8 text-primary/80" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin" style={{ animationDuration: "40s" }}>
+                <Database className="w-8 h-8 text-primary/80" />
+              </div>
+            </div>
+
+            <div key={streamKey} className="absolute inset-0">
+              {Array.from({ length: 6 }, (_, i) => (
+                <DataStream key={i} delay={Math.random() * 800} />
+              ))}
             </div>
           </div>
-
-          <div key={streamKey} className="absolute inset-0">
-            {Array.from({ length: 6 }, (_, i) => (
-              <DataStream key={i} delay={Math.random() * 800} />
-            ))}
-          </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }
