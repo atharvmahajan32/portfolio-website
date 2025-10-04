@@ -9,6 +9,8 @@ export function Navigation() {
   const [mounted, setMounted] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string | null>(null)
+  const [navItemsLoaded, setNavItemsLoaded] = useState<boolean[]>([false, false, false, false, false])
+  const [animationStarted, setAnimationStarted] = useState(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
@@ -49,6 +51,30 @@ export function Navigation() {
     };
   }, []);
 
+  // Separate effect to handle navbar animation when component becomes visible
+  useEffect(() => {
+    const startAnimation = () => {
+      if (animationStarted) return;
+      
+      setAnimationStarted(true);
+      const delays = [200, 350, 500, 650, 800]; // Sequential delays for each item
+      
+      delays.forEach((delay, index) => {
+        setTimeout(() => {
+          setNavItemsLoaded(prev => {
+            const newState = [...prev];
+            newState[index] = true;
+            return newState;
+          });
+        }, delay);
+      });
+    };
+
+    // Start animation when component mounts and is visible
+    const timer = setTimeout(startAnimation, 100);
+    return () => clearTimeout(timer);
+  }, [animationStarted]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -70,7 +96,19 @@ export function Navigation() {
       <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out">
         <div className="bg-background/70 backdrop-blur-xl border border-border rounded-full shadow-lg px-6 py-3">
           <div className="flex items-center space-x-6">
-            <div className="w-12 h-6 bg-muted animate-pulse rounded"></div>
+            {/* Animated skeleton for navbar items */}
+            {[...Array(4)].map((_, i) => (
+              <div 
+                key={i}
+                className="bg-muted animate-pulse rounded h-4"
+                style={{
+                  width: `${60 + Math.random() * 20}px`,
+                  animationDelay: `${i * 150}ms`,
+                  animationDuration: '1.5s'
+                }}
+              ></div>
+            ))}
+            <div className="w-8 h-8 bg-muted animate-pulse rounded-full ml-2"></div>
           </div>
         </div>
       </nav>
@@ -84,53 +122,88 @@ export function Navigation() {
           isScrolled ? "px-4 py-2" : "px-6 py-3"
         }`}
         style={{
-          transition: 'padding 0.5s cubic-bezier(0.4, 0, 0.2, 1), font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+          boxShadow: navItemsLoaded.every(loaded => loaded) 
+            ? '0 8px 32px hsl(var(--primary) / 0.1), 0 1px 3px hsl(var(--foreground) / 0.1)' 
+            : '0 4px 16px hsl(var(--foreground) / 0.05)'
         }}
       >
         <div className="flex items-center space-x-6">
           <button
             onClick={() => scrollToSection("home")}
-            className={`font-medium text-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
+            className={`font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out cursor-pointer relative group ${
               isScrolled ? "text-xs" : "text-sm"
-            } ${activeSection === "home" ? "text-primary" : ""}`}
+            } ${activeSection === "home" ? "text-primary" : ""} ${
+              navItemsLoaded[0] 
+                ? "opacity-100 translate-y-0 scale-100 blur-none" 
+                : "opacity-0 translate-y-6 scale-90 blur-sm"
+            }`}
             style={{
-              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+              transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transform: navItemsLoaded[0] 
+                ? 'translateY(0px) rotateX(0deg) scale(1)' 
+                : 'translateY(20px) rotateX(15deg) scale(0.9)'
             }}
           >
             Home
+            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-300 ease-in-out cursor-pointer relative group ${
               isScrolled ? "text-xs" : "text-sm"
-            } ${activeSection === "projects" ? "text-primary" : ""}`}
+            } ${activeSection === "projects" ? "text-primary" : ""} ${
+              navItemsLoaded[1] 
+                ? "opacity-100 translate-y-0 scale-100 blur-none" 
+                : "opacity-0 translate-y-6 scale-90 blur-sm"
+            }`}
             style={{
-              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+              transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transform: navItemsLoaded[1] 
+                ? 'translateY(0px) rotateX(0deg) scale(1)' 
+                : 'translateY(20px) rotateX(15deg) scale(0.9)'
             }}
           >
             Projects
+            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
           </button>
           <button
             onClick={() => scrollToSection("skills")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-300 ease-in-out cursor-pointer relative group ${
               isScrolled ? "text-xs" : "text-sm"
-            } ${activeSection === "skills" ? "text-primary" : ""}`}
+            } ${activeSection === "skills" ? "text-primary" : ""} ${
+              navItemsLoaded[2] 
+                ? "opacity-100 translate-y-0 scale-100 blur-none" 
+                : "opacity-0 translate-y-6 scale-90 blur-sm"
+            }`}
             style={{
-              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+              transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transform: navItemsLoaded[2] 
+                ? 'translateY(0px) rotateX(0deg) scale(1)' 
+                : 'translateY(20px) rotateX(15deg) scale(0.9)'
             }}
           >
             Skills
+            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
           </button>
           <button
             onClick={() => scrollToSection("contact")}
-            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-500 ease-in-out cursor-pointer ${
+            className={`font-medium text-muted-foreground hover:text-primary transition-all duration-300 ease-in-out cursor-pointer relative group ${
               isScrolled ? "text-xs" : "text-sm"
-            } ${activeSection === "contact" ? "text-primary" : ""}`}
+            } ${activeSection === "contact" ? "text-primary" : ""} ${
+              navItemsLoaded[3] 
+                ? "opacity-100 translate-y-0 scale-100 blur-none" 
+                : "opacity-0 translate-y-6 scale-90 blur-sm"
+            }`}
             style={{
-              transition: 'font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease'
+              transition: 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transform: navItemsLoaded[3] 
+                ? 'translateY(0px) rotateX(0deg) scale(1)' 
+                : 'translateY(20px) rotateX(15deg) scale(0.9)'
             }}
           >
             Contact
+            <div className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"></div>
           </button>
           <Button
             variant="ghost"
@@ -140,22 +213,27 @@ export function Navigation() {
               e.stopPropagation()
               setTheme(theme === "dark" ? "light" : "dark")
             }}
-            className="ml-2 transition-all duration-500 ease-in-out cursor-pointer hover:bg-accent"
+            className={`ml-2 transition-all duration-300 ease-in-out cursor-pointer hover:bg-accent group relative overflow-hidden ${
+              navItemsLoaded[4] 
+                ? "opacity-100 translate-y-0 scale-100 rotate-0 blur-none" 
+                : "opacity-0 translate-y-6 scale-90 rotate-180 blur-sm"
+            }`}
+            style={{
+              transition: 'all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              transform: navItemsLoaded[4] 
+                ? 'translateY(0px) rotateY(0deg) scale(1)' 
+                : 'translateY(25px) rotateY(180deg) scale(0.8)'
+            }}
             aria-label="Toggle theme"
           >
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             {theme === "dark" ? (
               <Sun 
-                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-500 ease-in-out`} 
-                style={{
-                  transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
+                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-300 ease-in-out relative z-10 group-hover:rotate-90`}
               />
             ) : (
               <Moon 
-                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-500 ease-in-out`}
-                style={{
-                  transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
+                className={`${isScrolled ? "h-3 w-3" : "h-4 w-4"} transition-all duration-300 ease-in-out relative z-10 group-hover:-rotate-12`}
               />
             )}
           </Button>
