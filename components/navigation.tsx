@@ -78,11 +78,16 @@ export function Navigation() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const offsetTop = element.offsetTop - window.innerHeight * 0.4
-      window.scrollTo({
-        top: Math.max(0, offsetTop),
-        behavior: "smooth",
-      })
+      // Calculate accurate target position relative to the document
+      const rect = element.getBoundingClientRect()
+      const elementTop = rect.top + window.scrollY
+
+      // Account for the fixed navbar height so the section isn't hidden behind it
+      const nav = document.querySelector('nav')
+      const navHeight = nav ? nav.getBoundingClientRect().height : 72
+      const target = Math.max(0, elementTop - navHeight - 12) // small padding
+
+      window.scrollTo({ top: target, behavior: 'smooth' })
 
       element.classList.add("highlight-section")
       setTimeout(() => {

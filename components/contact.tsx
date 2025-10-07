@@ -6,10 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, FileText } from "lucide-react"
+import GtmModal from "./gtm-modal"
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSending, setIsSending] = useState(false);
+  const [isGtmOpen, setIsGtmOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -113,6 +115,8 @@ export function Contact() {
           </div>
         </div>
       </div>
+  <p className=" pt-3 text-center text-sm sm:text-base text-muted-foreground">Want to talk about AI/ML, <a href="#" onClick={(e) => { e.preventDefault(); setIsGtmOpen(true); }} rel="noreferrer" className="text-primary underline underline-offset-2 decoration-primary decoration-1 hover:text-black dark:hover:text-white hover:decoration-black dark:hover:decoration-white transition-colors cursor-pointer">GTM</a>, or ideas? <a href="https://calendly.com/m-atharv063/new-meeting" target="_blank" rel="noreferrer" className="text-primary underline underline-offset-2 decoration-primary decoration-1 hover:text-black dark:hover:text-white hover:decoration-black dark:hover:decoration-white transition-colors">Let’s grab a virtual coffee.</a></p>
+  <GtmModal isOpen={isGtmOpen} onClose={() => setIsGtmOpen(false)} />
     </section>
   );
 }

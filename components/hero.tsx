@@ -6,9 +6,8 @@ import { Database } from "lucide-react"
 const roles = [
   "Data Scientist",
   "Machine Learning Engineer",
-  "AI Enthusiast",
-  "Occasionally Overfits ;)",
-  "Web Developer",
+  "AI Engineer",
+  "Occasionally Overfits ;)"
 ]
 
 const DataStream = ({ delay = 0 }: { delay?: number }) => {
@@ -181,7 +180,12 @@ export function Hero({ showName = true, showContent = false }: { showName?: bool
               <span className="animate-pulse">|</span>
             </p>
             <p className="text-sm sm:text-base text-muted-foreground max-w-full sm:max-w-md text-pretty leading-relaxed">
-              I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders.
+              I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders. Also, I love watching cars go ridiculously fast in circles.
+            </p>
+
+            {/* Highlighted availability line (matches design screenshot) - plain text with improved wrapping */}
+            <p className="mt-4 text-primary font-medium max-w-full sm:max-w-md leading-relaxed whitespace-normal break-words">
+              Open to freelance, collaborations, or roles where data makes real-world impact.
             </p>
           </div>
         )}
