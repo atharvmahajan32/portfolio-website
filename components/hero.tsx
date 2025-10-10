@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 import { Database } from "lucide-react"
 
 const roles = [
+  "Machine Learning Engineer",
   "Data Scientist",
   "AI Engineer",
-  "Machine Learning Engineer",
   "Occasionally Overfits ;)"
 ]
 
