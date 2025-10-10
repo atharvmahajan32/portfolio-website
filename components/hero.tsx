@@ -5,8 +5,8 @@ import { Database } from "lucide-react"
 
 const roles = [
   "Data Scientist",
-  "Machine Learning Engineer",
   "AI Engineer",
+  "Machine Learning Engineer",
   "Occasionally Overfits ;)"
 ]
 
