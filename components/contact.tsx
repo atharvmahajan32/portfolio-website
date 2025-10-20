@@ -50,20 +50,20 @@ export function Contact() {
           <Card className="p-4 text-sm">
             <ul className="list-disc list-outside pl-6 space-y-2 leading-7 text-foreground marker:text-primary/70">
               <li className="space-y-1">
+                <div className="font-medium">AWS Certified AI Practitioner</div>
+                <Button 
+                  variant='link'
+                  className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
+                  onClick={() => window.open('https://www.credly.com/badges/cd1ab672-84c1-4e4e-b0ca-e22d43d20f71/public_url', '_blank')}>
+                  View Credentials
+                </Button>
+              </li>
+              <li className="space-y-1">
                 <div className="font-medium">LangChain Adacemy Introduction to LangGraph</div>
                 <Button 
                   variant='link'
                   className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
                   onClick={() => window.open('https://academy.langchain.com/certificates/ahnipwj2nw', '_blank')}>
-                  View Credentials
-                </Button>
-              </li>
-              <li className="space-y-1">
-                <div className="font-medium">AWS Academy Cloud Architecting</div>
-                <Button 
-                  variant='link'
-                  className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
-                  onClick={() => window.open('https://www.credly.com/badges/a9b413bb-3070-407f-ac47-8c37dffe7ce6/public_url', '_blank')}>
                   View Credentials
                 </Button>
               </li>
