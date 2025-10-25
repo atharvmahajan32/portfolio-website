@@ -9,7 +9,7 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Atharv Mahajan - Data Scientist & ML Engineer",
+  title: "Atharv Mahajan - ML Engineer & Data Scientist",
   description: "Portfolio of Atharv Mahajan, Data Scientist",
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
