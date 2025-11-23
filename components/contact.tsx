@@ -50,6 +50,15 @@ export function Contact() {
           <Card className="p-4 text-sm">
             <ul className="list-disc list-outside pl-6 space-y-2 leading-7 text-foreground marker:text-primary/70">
               <li className="space-y-1">
+                <div className="font-medium">AWS Certified Machine Learning Engineer - Associate</div>
+                <Button 
+                  variant='link'
+                  className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
+                  onClick={() => window.open('https://www.credly.com/badges/001e60c3-7ee4-4a5d-a9d3-374132679070/public_url', '_blank')}>
+                  View Credentials
+                </Button>
+              </li>
+              <li className="space-y-1">
                 <div className="font-medium">AWS Certified AI Practitioner</div>
                 <Button 
                   variant='link'
@@ -71,7 +80,7 @@ export function Contact() {
           </Card>
         </div>
 
-        <div id="li-gh" className="space-y-4">
+        <div id="li-gh" className="space-y-4 lg:mt-19 lg:ml-5">
           <div className="flex flex-col space-y-3">
             <Button
               variant="link"
