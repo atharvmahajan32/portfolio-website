@@ -180,7 +180,7 @@ export function Hero({ showName = true, showContent = false }: { showName?: bool
               <span className="animate-pulse">|</span>
             </p>
             <p className="text-sm sm:text-base text-muted-foreground max-w-full sm:max-w-md text-pretty leading-relaxed">
-              I teach machines to learn, data to behave, and models to not embarrass me in front of stakeholders. Also, I love watching racecars go ridiculously fast in circles.
+              I specialize in developing intelligent systems, leveraging data to drive insights, and building models that deliver impactful solutions. Passionate about innovation and continuous learning in the field of AI and data science.
             </p>
 
             

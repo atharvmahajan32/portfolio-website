@@ -1,15 +1,34 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
 import { Projects } from "@/components/projects"
 import { Skills } from "@/components/skills"
 import { Contact } from "@/components/contact"
 import { ResumeDownload } from "@/components/resume-download"
+import { InteractivityHintModal } from "@/components/interactivity-hint-modal"
 import { useSequentialLoading } from "@/hooks/use-sequential-loading"
 
 export default function Home() {
   const { showName, showNavbar, showContent, isFirstLoad } = useSequentialLoading()
+  const [showHintModal, setShowHintModal] = useState(false)
+
+  // Show interactivity hint modal 7 seconds after loading animation completes
+  useEffect(() => {
+    if (showContent && isFirstLoad) {
+      const hintTimer = setTimeout(() => {
+        // Only show if user hasn't seen it this session
+        const hasSeenHint = sessionStorage.getItem('portfolio-hint-shown')
+        if (hasSeenHint !== 'true') {
+          setShowHintModal(true)
+          sessionStorage.setItem('portfolio-hint-shown', 'true')
+        }
+      }, 7000)
+
+      return () => clearTimeout(hintTimer)
+    }
+  }, [showContent, isFirstLoad])
 
   console.log('Render states:', { showName, showNavbar, showContent, isFirstLoad })
 
@@ -64,6 +83,12 @@ export default function Home() {
       }`}>
         <ResumeDownload />
       </div>
+
+      {/* Interactivity hint modal */}
+      <InteractivityHintModal 
+        isOpen={showHintModal} 
+        onClose={() => setShowHintModal(false)} 
+      />
     </div>
   )
 }

@@ -63,31 +63,30 @@ const projects = [
 
   },
   {
-    "title": "Customer Churn Predictor",
-    "description": "An AI-powered Streamlit app that predicts bank customer churn based on user inputs.",
-    "image": "/churn-predictor.png",
-    "liveUrl": "https://cst-churn-prediction.streamlit.app/",
-    "githubUrl": "https://github.com/atharvmahajan32/Churn-Prediction",
-    "tech": ["TensorFlow", "Keras", "Streamlit", "Scikit-learn", "Pandas"],
-    "detailedDescription":
-      "Customer Churn Predictor is a web-based application that uses a deep learning model to estimate the probability of a bank customer churning based on demographic and account activity data. Built with TensorFlow and deployed using Streamlit, the app includes data preprocessing pipelines, encoding for categorical features, scaling, and real-time predictions. It offers an intuitive UI with customized styling and real-time interactivity to support customer retention strategies.",
-    "myRole":
-      "Developed the complete machine learning pipeline and designed the interactive frontend using Streamlit. Handled model training, preprocessing, deployment, and UI styling.",
-    "challenges": [
-      "Built a custom Keras-based neural network model for binary classification",
-      "Implemented secure and cached loading for large model files and encoders to optimize performance",
-      "Handled dynamic input transformation including encoding and scaling for real-time predictions",
-      "Designed a responsive and styled user interface using custom CSS within Streamlit"
-    ],
-    "features": [
-      "Deep learning model to predict customer churn probability",
-      "Real-time prediction with input-based probability and class label (Churn or Stay)",
-      "Encoders and scaler for handling categorical and numerical inputs",
-      "Cached model and transformer loading for fast performance",
-      "Intuitive UI with CSS-styled inputs and result display",
-      "Thread-safe prediction execution to prevent concurrency issues"
-    ]
-  }
+  "title": "Atharv's Weekly Journal",
+  "description": "A full-stack personal blog platform with a FastAPI backend, admin dashboard, and an AI chatbot feature currently in development.",
+  "image": "/blog.png",
+  "liveUrl": "https://blog.athrv.me",
+  "githubUrl": "https://github.com/atharvmahajan32/FastAPI-Blog",
+  "tech": ["React", "Tailwind CSS", "FastAPI", "LangChain", "AWS"],
+  "detailedDescription": "Atharv's Weekly Journal is a full-stack blog platform featuring a FastAPI backend deployed on AWS. The frontend is built with Next.js 16 and Tailwind CSS, featuring dynamic routing for individual posts, an admin dashboard for content management, and a 'Why are you here?' visitor engagement form. The project includes YACht-B (Yet Another Chat-Bot), an AI-powered chatbot currently under development.",
+  "myRole": "Architected and developed the complete full-stack application including FastAPI backend with RESTful endpoints, Next.js frontend with dynamic routing, admin panel for CRUD operations, and currently building the YACht-B chatbot feature.",
+  "challenges": [
+    "Designed RESTful API endpoints for blog posts CRUD operations (/get, /get_reasons, /where_to)",
+    "Implemented secure admin authentication with token-based headers",
+    "Built dynamic post routing with Next.js App Router (/post/[id])",
+    "Developing YACht-B chatbot backend integration (in progress)"
+  ],
+  "features": [
+    "FastAPI backend with endpoints for posts, reasons, and form submissions",
+    "Admin dashboard for creating, updating, and deleting blog posts",
+    "Dynamic post pages with individual post routing",
+    "Visitor engagement form ('Why are you here?') with reason collection",
+    "Token-based authentication for admin operations",
+    "Responsive UI with custom CSS styling and gradient backgrounds",
+    "YACht-B (Yet Another Chat-Bot) - AI chatbot for content interaction (In Development)"
+  ]
+}
   
 ]
 
