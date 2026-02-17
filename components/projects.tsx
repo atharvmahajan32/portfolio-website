@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import './projects-flip.css'
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
 import { ProjectModal } from "./project-modal"
@@ -89,6 +90,7 @@ const projects = [
 }
   
 ]
+
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null)

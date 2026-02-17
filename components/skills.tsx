@@ -359,9 +359,15 @@ const SkillLogo = ({ skill }: { skill: string }) => {
   )
 }
 
+import { Eye } from "lucide-react"
+
+// Add a fade-slide animation for the indicator
+const indicatorAnimation = "transition-all duration-300 ease-out opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0";
+
 export function Skills() {
   const [selectedSkill, setSelectedSkill] = useState<(typeof skillsData)[keyof typeof skillsData] | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null)
 
   const handleSkillClick = (skillName: string) => {
     const skill = skillsData[skillName as keyof typeof skillsData]
@@ -389,12 +395,26 @@ export function Skills() {
                   key={skillIndex}
                   className="group flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer hover:bg-primary/5"
                   onClick={() => handleSkillClick(skill)}
+                  onMouseEnter={() => setHoveredSkill(skill)}
+                  onMouseLeave={() => setHoveredSkill(null)}
                 >
                   <div className="group-hover:scale-110 transition-transform duration-200">
                     <SkillLogo skill={skill} />
                   </div>
-                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-200">
-                    {skill}
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors duration-200 flex items-center">
+                    <span>{skill}</span>
+                    <span
+                      className="flex items-center overflow-hidden transition-all duration-300 ml-0 group-hover:ml-1"
+                      style={{
+                        width: hoveredSkill === skill ? 22 : 0, // 22px fits the icon
+                        opacity: hoveredSkill === skill ? 1 : 0,
+                        marginLeft: hoveredSkill === skill ? '0.25rem' : 0,
+                        pointerEvents: 'none',
+                      }}
+                    >
+                      <Eye className="w-4 h-4" aria-label="Open" />
+                      <span className="sr-only">Open</span>
+                    </span>
                   </span>
                 </button>
               ))}
