@@ -59,6 +59,15 @@ export function Contact() {
                 </Button>
               </li>
               <li className="space-y-1">
+                <div className="font-medium">AWS Certified Solutions Architect - Associate</div>
+                <Button 
+                  variant='link'
+                  className="p-0 h-auto min-h-0 justify-start bg-transparent text-primary hover:text-primary/90 hover:bg-transparent hover:cursor-pointer"
+                  onClick={() => window.open('https://www.credly.com/badges/cd85fd85-92e3-4b23-a2e5-64e2dfc5d0d8/public_url', '_blank')}>
+                  View Credentials
+                </Button>
+              </li>
+              <li className="space-y-1">
                 <div className="font-medium">AWS Certified AI Practitioner</div>
                 <Button 
                   variant='link'
