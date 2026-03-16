@@ -10,7 +10,7 @@ import { ProjectModal } from "./project-modal"
 const projects = [
   {
     title: "LungCare.ai",
-    description: "LungCare.ai helps healthcare professionals detect and identify lung cancer cell types from histopathological images.",
+    description: "LungCare.ai is an advanced computer vision application designed to assist healthcare professionals by automatically detecting and classifying lung cancer cell types directly from high-resolution histopathological images.",
     image: "/lungcareai.png",
     liveUrl: "https://lungcareai.vercel.app/",
     githubUrl: "https://github.com/theayusharma/LungCareAI",
@@ -35,7 +35,7 @@ const projects = [
   },
   {
     title: "AI Fitness Tracker",
-    description: "Real-time rep counting and form feedback with integrated nutrition tracking.",
+    description: "An AI-powered fitness application providing real-time rep counting and actionable form feedback through computer vision, seamlessly paired with an integrated nutrition tracking system for health management..",
     image: "/aifitnesstracker.png",
     liveUrl: "https://fitness-tracker-cv.streamlit.app/",
     githubUrl: "https://github.com/atharvmahajan32/Fitness-Tracker",
@@ -64,28 +64,33 @@ const projects = [
 
   },
   {
-  "title": "Atharv's Weekly Journal",
-  "description": "A full-stack personal blog platform with a FastAPI backend, admin dashboard, and an AI chatbot feature currently in development.",
-  "image": "/blog.png",
-  "liveUrl": "https://blog.athrv.me",
-  "githubUrl": "https://github.com/atharvmahajan32/FastAPI-Blog",
-  "tech": ["React", "Tailwind CSS", "FastAPI", "LangChain", "AWS"],
-  "detailedDescription": "Atharv's Weekly Journal is a full-stack blog platform featuring a FastAPI backend deployed on AWS. The frontend is built with Next.js 16 and Tailwind CSS, featuring dynamic routing for individual posts, an admin dashboard for content management, and a 'Why are you here?' visitor engagement form. The project includes YACht-B (Yet Another Chat-Bot), an AI-powered chatbot currently under development.",
-  "myRole": "Architected and developed the complete full-stack application including FastAPI backend with RESTful endpoints, Next.js frontend with dynamic routing, admin panel for CRUD operations, and currently building the YACht-B chatbot feature.",
+  "title": "VLRNT: Valorant Data Analysis & Modeling",
+  "description": "A data science project focused on analyzing and modeling player performance in Valorant using synthetic data to simulate key metrics, visualize trends, and build predictive models.",
+  "image": "/vlrnt.png",
+  "liveUrl": "https://github.com/atharvmahajan32/VLRNT/tree/main/notebooks",
+  "githubUrl": "https://github.com/atharvmahajan32/VLRNT",
+  "tech": [
+    "Python",
+    "Jupyter",
+    "Machine Learning",
+    "Data Visualization",
+    "uv"
+  ],
+  "detailedDescription": "VLRNT is a comprehensive data science project designed to analyze player performance in the tactical shooter game Valorant. It features a complete pipeline from generating raw synthetic data to preprocessing, scaling, and engineering features. The project includes extensive exploratory data analysis (EDA) to uncover trends and relationships, culminating in the training and evaluation of predictive models for player ranking and clustering.",
+  "myRole": "Developed the end-to-end data science pipeline, including synthetic data generation, exploratory data analysis, feature engineering, and the training and evaluation of predictive clustering models.",
   "challenges": [
-    "Designed RESTful API endpoints for blog posts CRUD operations (/get, /get_reasons, /where_to)",
-    "Implemented secure admin authentication with token-based headers",
-    "Built dynamic post routing with Next.js App Router (/post/[id])",
-    "Developing YACht-B chatbot backend integration (in progress)"
+    "Generating robust synthetic data that accurately reflects realistic Valorant player metrics",
+    "Performing comprehensive exploratory data analysis (EDA) to identify key performance trends",
+    "Preprocessing and scaling raw data to optimize inputs for machine learning algorithms",
+    "Evaluating model performance and interpreting cluster heatmaps for player evaluation"
   ],
   "features": [
-    "FastAPI backend with endpoints for posts, reasons, and form submissions",
-    "Admin dashboard for creating, updating, and deleting blog posts",
-    "Dynamic post pages with individual post routing",
-    "Visitor engagement form ('Why are you here?') with reason collection",
-    "Token-based authentication for admin operations",
-    "Responsive UI with custom CSS styling and gradient backgrounds",
-    "YACht-B (Yet Another Chat-Bot) - AI chatbot for content interaction (In Development)"
+    "Automated synthetic data generation for modeling and testing",
+    "In-depth Exploratory Data Analysis (EDA) with statistical summaries",
+    "Predictive modeling and clustering algorithms for player ranking",
+    "Rich data visualizations including ADR boxplots, correlation heatmaps, and key metric pairplots",
+    "Structured Jupyter Notebook pipeline from data generation to model evaluation",
+    "Modern Python dependency and environment management using uv and pyproject.toml"
   ]
 }
   
